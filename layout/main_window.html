@@ -1,0 +1,42 @@
+<div class="main-window unselectable">
+    <div class="game-mode-select">
+        <label class="player-number-label">玩家人数</label>
+        <select class="player-number-select">
+            <option class="4人" id="4">4</option>
+            <option class="5人" id="5">5</option>
+            <option class="6人" id="6">6</option>
+            <option class="7人" id="7">7</option>
+            <option class="8人" id="8">8</option>
+            <option class="9人" id="9">9</option>
+            <option class="10人" id="10">10</option>
+        </select>
+        <button class="btn btn-primary start-game">开始游戏</button>
+    </div>
+    <div class="game-area" style="display: none">
+        <div><label class="topic-type-label">本次主题：</label><label class="topic-type"></label>
+        </div>
+        <div>
+            <label class="pass-to-next-player-label" style="display: none">请给下一个玩家</label>
+        </div>
+        <button class="btn btn-primary see-identity">开启密件</button>
+        <div class="identity">
+            <div class="you-are-spy" style="display: none">
+                <label class="identity-label">你是间谍</label>
+                <image class=""></image>
+            </div>
+            <div class="you-are-agent" style="display: none">
+                <label class="identity-label">你是特工</label>
+                <span></span><label class="secret-word-label">暗号：</label><label class="secret-word"></label></span>
+                <image class=""></image>
+            </div>
+            <button class="btn btn-primary confirm-identity" style="display: none">确定</button>
+        </div>
+
+        <button class="btn btn-success begin-question" style="display: none">开始询问</button>
+        <button class="btn btn-danger show-me-answer" style="display: none">查看答案</button>
+        <div class="answer" style="display: none">
+            <div><label class="answer-label"></label></div>
+            <button class="btn btn-primary start-new-game">开始新游戏</button>
+        </div>
+    </div>
+</div>
