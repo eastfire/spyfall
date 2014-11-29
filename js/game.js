@@ -17,8 +17,13 @@ define(function(require,exports,module) {
     var secretWords = {
         "地点":[
             "飞机","银行","海滩","马戏场","公司聚会","赌场","温泉","大使馆","医院","旅馆",
-            "军事基地","电影棚","豪华邮轮","客运列车","海盗船","极地","警察局","饭店","学校","4S店",
-            "太空站","潜艇","超市","剧院","大学"
+            "军事基地","电影棚","豪华邮轮","客运列车","海盗船","极地工作站","警察局","饭店","学校","4S店",
+            "太空站","潜艇","超市","剧院","大学","教堂"
+        ],
+        "职业":[
+           "教师","学生","医生","警察","服务员","拳击手","驯兽师","工程师","消防员","官员",
+            "牧师","营业员","律师","农民","司机","士兵","水手","厨师","会计","CEO",
+            "兽医","修理工","设计师","翻译","作家","飞行员"
         ]
     }
 
@@ -34,7 +39,7 @@ define(function(require,exports,module) {
 
     $(".start-game").on("click", function(){
         number = $(".player-number-select").val()
-        var theme = "地点";
+        var theme = getRandomItem(_.keys(secretWords));
         window.gameStatus = {
             playerNumber : number,
             currentPlayer: 0,
