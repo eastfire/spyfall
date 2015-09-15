@@ -3,10 +3,10 @@ define(function(require,exports,module) {
     try {
         var appCache = window.applicationCache;
 
-        appCache.update(); // 开始更新
+        appCache.update(); // 开始更�?
 
         if (appCache.status == window.applicationCache.UPDATEREADY) {
-            appCache.swapCache();  // 得到最新版本缓存列表，并且成功下载资源，更新缓存到最新
+            appCache.swapCache();  // 得到最新版本缓存列表，并且成功下载资源，更新缓存到最�?
         }
     } catch (e) {
         console.log(e)
@@ -16,13 +16,13 @@ define(function(require,exports,module) {
 
     var secretWords = {
         "地点":[
-            "飞机","银行","海滩","马戏场","公司聚会","赌场","温泉","大使馆","医院","旅馆",
-            "军事基地","电影棚","豪华邮轮","客运列车","海盗船","极地工作站","警察局","饭店","学校","4S店",
+            "飞机","银行","海滩","马戏团","公司聚会","赌场","温泉","大使馆","医院","旅馆",
+            "军事基地","电影院","豪华邮轮","客运列车","海盗船","极地工作站","警察局","饭店","学校","4S店",
             "太空站","潜艇","超市","剧院","大学","教堂"
         ],
         "职业":[
            "教师","学生","医生","警察","服务员","拳击手","驯兽师","工程师","消防员","官员",
-            "牧师","营业员","律师","农民","司机","士兵","水手","厨师","会计","CEO",
+            "牧师","推销员","律师","农民","司机","士兵","水手","厨师","会计","CEO",
             "兽医","修理工","设计师","翻译","作家","飞行员"
         ]
     }
@@ -83,7 +83,22 @@ define(function(require,exports,module) {
 
     $(".begin-question").on("click",function(){
         $(".begin-question").hide();
-        $(".show-me-answer").show();
+        //start countdown
+        $(".countdown").show();
+        window.gameStatus.time = window.gameStatus.playerNumber * 60+1;
+        window.gameStatus.interval = setInterval(function(){
+            window.gameStatus.time --;
+            var minute = Math.floor(window.gameStatus.time/60);
+            var sec = window.gameStatus.time%60;
+            $(".countdown").html( (minute<10?"0":"")+minute+":"+(sec<10?"0":"")+sec);
+            if (window.gameStatus.time<=0){
+                var audio = new Audio('./alarm.mp3');
+                audio.play();
+                clearInterval(window.gameStatus.interval);
+                $(".countdown").hide();
+                $(".show-me-answer").show();
+            }
+	  },1000);
     });
 
     $(".show-me-answer").on("click",function(){
