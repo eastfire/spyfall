@@ -12,39 +12,6 @@ window.clone = function(obj){
     return JSON.parse( JSON.stringify(obj) );
 }
 
-window.getRandomItem = function(array){
-    if ( array.length == 0 )
-        return null;
-    return array[Math.floor(array.length*Math.random())];
-}
-
-window.getRandomItems = function(array, count){
-    if ( array.length == 0 )
-        return null;
-    var newArray = [];
-    for ( var item in array ){
-        newArray.push(array[item]);
-    }
-    if ( count >= array.length ) {
-        return newArray;
-    }
-
-    var outputArray = [];
-    for ( var i = 0; i < count ; i++) {
-        var index = Math.floor(newArray.length * Math.random());
-        outputArray.push(newArray.splice(index,1)[0]);
-    }
-    return outputArray;
-}
-
-window.isInArray = function(array, item){
-    for ( var i = 0 ; i < array.length; i++ ){
-        if ( array[i] == item )
-            return true;
-    }
-    return false;
-}
-
 var rtlang = {'zh_CN':{}, 'en':{}};
 rtlang['en']['less than a minute'] = 'less than a minute';
 rtlang['en'][' minutes'] = ' minutes';

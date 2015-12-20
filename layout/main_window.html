@@ -1,43 +1,86 @@
-<div class="main-window unselectable">
-    <div class="game-mode-select">
+<div class="main-window">
+    <div class="game-page choose-device container-fluid">
         <label class="player-number-label">玩家人数</label>
         <select class="player-number-select">
-            <option class="4人" id="4">4</option>
-            <option class="5人" id="5">5</option>
-            <option class="6人" id="6">6</option>
-            <option class="7人" id="7">7</option>
-            <option class="8人" id="8">8</option>
-            <option class="9人" id="9">9</option>
-            <option class="10人" id="10">10</option>
         </select>
-        <button class="btn btn-primary start-game">开始游戏</button>
+        <div class="row button-line">
+            <button class="col-md-4 btn btn-default host-multi-dev-game">创建 多设备游戏</button>
+            <button class="col-md-4 btn btn-default join-multi-dev-game">加入 多设备游戏</button>
+        </div>
+        <div class="row button-line">
+            <button class="col-md-4 btn btn-default host-single-dev-game">创建 单设备游戏</button>
+        </div>
+        <div class="row button-line">
+            <button class="col-md-4 btn btn-default game-rule">游戏规则</button>
+        </div>
     </div>
-    <div class="game-area" style="display: none">
-        <div><label class="topic-type-label">本次主题：</label><label class="topic-type"></label>
-        </div>
-        <div>
-            <label class="pass-to-next-player-label" style="display: none">请给下一个玩家</label>
-        </div>
-        <button class="btn btn-primary see-identity">开启密件</button>
-        <div class="identity">
+    <div class="game-page host-sync container-fluid">
+        <div><label class="hashid-label">游戏ID：</label><label class="hashid"></label></div>
+        <div class="hashid-hint-label">请将你的游戏ID告知参与游戏的其他玩家</div>
+        <button class="btn btn-primary start-game">开始正式游戏</button>
+    </div>
+    <div class="game-page join-sync container-fluid">
+        <div><label class="hashid-label">游戏ID：</label><input placeholder="主持玩家的游戏ID" class="hashid-input"/></div>
+        <div><label class="seat-number-label">座次：</label><select class="seat-number-select"></select></div>
+        <button class="button-line btn btn-primary start-game">加入游戏</button>
+    </div>
+    <div class="game-page multi-setup container-fluid">
+        <div><label class="seat-number-label">座次：</label><label class="seat-number"></label></div>
+        <div><label class="word-type-label">本次主题：</label><label class="word-type"></label></div>
+        <div class="identity" style="height:30px">
             <div class="you-are-spy" style="display: none">
-                <label class="identity-label">你是间谍</label>
-                <image class=""></image>
+                <label class="identity-label">你是间谍，你不知道暗号是什么</label>
             </div>
             <div class="you-are-agent" style="display: none">
-                <label class="identity-label">你是特工</label>
-                <span></span><label class="secret-word-label">暗号：</label><label class="secret-word"></label></span>
-                <image class=""></image>
+                <label class="identity-label">你是特工，</label>
+                <label class="secret-word-label">暗号：</label><label class="secret-word"></label>
             </div>
-            <button class="btn btn-primary confirm-identity" style="display: none">确定</button>
+        </div>
+        <button class="button-line btn btn-danger see-identity">查看密件</button>
+        <div class="all-words-section"  style="display: none">
+            <lable class="all-words-title">所有可能出现的暗号：</lable>
+            <p class="all-words"></p>
         </div>
 
-        <button class="btn btn-success begin-question" style="display: none">开始询问</button>
+        <button class="btn btn-primary start-investigation" style="display: none">开始询问</button>
         <div class="countdown" style="display:none"></div>
         <button class="btn btn-danger show-me-answer" style="display: none">查看答案</button>
-        <div class="answer" style="display: none">
-            <div><label class="answer-label"></label></div>
-            <button class="btn btn-primary start-new-game">开始新游戏</button>
+        <div class="answer-section">
+            <label class="button-line answer-label"></label>
+            <button class="button-line restart-game btn btn-primary">开始新游戏</button>
+        </div>
+    </div>
+    <div class="game-page single-setup">
+        <div><label class="seat-number-label">座次：</label><label class="seat-number"></label></div>
+        <div><label class="word-type-label">本次主题：</label><label class="word-type"></label></div>
+        <div>
+            <label class="pass-to-next-player-label" style="display: none">请将手机给下一个玩家</label>
+        </div>
+        <div class="identity" style="height:30px">
+            <div class="you-are-spy" style="display: none">
+                <label class="identity-label">你是间谍，你不知道暗号是什么</label>
+            </div>
+            <div class="you-are-agent" style="display: none">
+                <label class="identity-label">你是特工，</label>
+                <label class="secret-word-label">暗号：</label><label class="secret-word"></label>
+            </div>
+        </div>
+        <button class="button-line btn btn-danger see-identity">开启密件</button>
+        <button class="btn btn-primary confirm-identity">确定</button>
+
+        <div class="all-words-section"  style="display: none">
+            <lable class="all-words-title">所有可能出现的暗号：</lable>
+            <p class="all-words"></p>
+        </div>
+
+        <button class="btn btn-primary start-investigation" style="display: none">开始询问</button>
+        <div class="countdown" style="display:none"></div>
+        <button class="btn btn-danger show-me-answer" style="display: none">查看答案</button>
+        <div class="answer-section">
+            <div>
+                <label class="button-line answer-label"></label>
+            </div>
+            <button class="button-line restart-game btn btn-primary">开始新游戏</button>
         </div>
     </div>
 </div>

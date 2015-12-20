@@ -21,6 +21,10 @@ body {
     position:absolute;
 }
 
+.button-line {
+    margin: 5px 0;
+}
+
 .countdown {
 	font-size: 50px;
 }
