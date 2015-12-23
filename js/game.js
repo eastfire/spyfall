@@ -77,6 +77,7 @@ define(function(require,exports,module) {
                 currentSpies.push( code & 0xf );//4bit
                 code = code >> 4;
             }
+            console.log("currentSeatNumber"+currentSeatNumber)
             currentSeatNumber = code & 0xf; //4bit
             code = code >> 4;
             return true;
@@ -117,7 +118,7 @@ define(function(require,exports,module) {
             if ( hash.indexOf("join-sync") === 0 ) {
                 $(".seat-number-select").empty();
                 for ( var i = 1; i <= 15; i++ ) {
-                    $(".seat-number-select").append("<option class='seat-number-option'>"+(i+1)+"</option>")
+                    $(".seat-number-select").append("<option class='seat-number-option' value='"+i+"'>"+(i+1)+"</option>")
                 }
 
                 showGamePage("join-sync");
@@ -137,6 +138,7 @@ define(function(require,exports,module) {
                         window.location.hash = "choose-device";
                         return;
                     } else {
+                        $(".start-game").prop("disabled",false);
                         currentSeatNumber = 0;
                         showGamePage("host-sync");
                         $(".hashid").text(currentHashCode);
@@ -163,7 +165,7 @@ define(function(require,exports,module) {
                         $(".all-words-section").show();
                         $(".all-words").text(allWords);
                         if ( investigationInterval ) clearInterval(investigationInterval);
-                        if ( currentSeatNumber == 0 ) {
+                        if ( currentSeatNumber === 0 ) {
                             $(".start-investigation").show();
                         } else {
                             $(".start-investigation").hide();
@@ -257,8 +259,9 @@ define(function(require,exports,module) {
     $(".hashid-input").on("input", onInputHash);
 
     $(".start-game").on("click",function(){
+        var hash = window.location.hash.substr(1);
         if ( hash.indexOf("join-sync") === 0 ) {
-            currentSeatNumber = $(".seat-number-select").val() - 1;
+            currentSeatNumber = $(".seat-number-select").val();
         }
         var code = encodeHashCode(currentTypeIndex, currentWordIndex, currentPlayerNumber, currentSpies, currentSeatNumber )
         window.location.hash = "multi-setup_"+code;
@@ -297,6 +300,7 @@ define(function(require,exports,module) {
         currentSeatNumber++;
         if ( currentSeatNumber < currentPlayerNumber ) {
             $(".seat-number").text(currentSeatNumber+1);
+            $(".start-investigation").hide();
         } else {
             $(".seat-number").hide();
             $(".confirm-identity").hide();
