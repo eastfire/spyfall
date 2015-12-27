@@ -295,6 +295,8 @@ define(function(require,exports,module) {
     $(".see-identity").on("touchstart",onMouseDown);
     $(".see-identity").on("mouseup",onMouseUp);
     $(".see-identity").on("touchend",onMouseUp);
+    $(".see-identity").on("mouseleave",onMouseUp);
+    $(".see-identity").on("touchcancel",onMouseUp);
 
     $(".confirm-identity").on("click",function(){
         currentSeatNumber++;
